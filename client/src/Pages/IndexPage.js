@@ -17,10 +17,11 @@ export default function IndexPage(){
 
   return (
     <div>
-      {posts.length>=2 && posts.map(post=>(
-        //displaying post from database
-        <Post {...post}/>
-      ))}
+      {posts.length >= 1 &&
+        posts.map((post) => (
+          //displaying post from database
+          <Post {...post} />
+        ))}
     </div>
   );
 }

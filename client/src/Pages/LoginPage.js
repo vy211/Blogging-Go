@@ -41,18 +41,22 @@ export default function LoginPage(){
     return <Navigate to={'/'}/>
   }
 
-  return(
+  return (
     <form className="login" onSubmit={login}>
-      <h1>Login</h1>
-      <input type="text"
-             placeholder="usename"
-             onChange={event => setUsername(event.target.value)}
-             />
-      <input type="password"
-             placeholder="password"
-             onChange={event => setPassword(event.target.value)}
-             />
-      <button>Login</button>
+      <h1 className="text-4xl mb-5 logo-font">Login</h1>
+      <input
+        type="text"
+        placeholder="usename"
+        onChange={(event) => setUsername(event.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="password"
+        onChange={(event) => setPassword(event.target.value)}
+      />
+      <button className="text-xl w-full rounded-lg font-semibold bg-gray-600 border border-white active:bg-gray-800 active:shadow-none neu-shadow-white p-2 text-white mt-5">
+        Login
+      </button>
     </form>
   );
 }

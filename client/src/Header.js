@@ -51,19 +51,43 @@ export default function Header() {
 
   return (
     <header>
-      <Link to="/" className="logo">
-        Bloging Go
-      </Link>
+      <div className="flex items-center gap-2">
+        <img src="/bglogo.png" alt="BG Logo" className="w-[50px] rounded-lg" />
+        <Link to="/" className="text-4xl logo-font">
+          Bloging Go
+        </Link>
+      </div>
       <nav>
         {username ? (
           <>
-            <Link to="/create">Create new post</Link>
-            <a onClick={logout}>Logout</a>
+            <Link
+              to="/create"
+              className="text-xl font-semibold bg-white border border-black neu-shadow p-2"
+            >
+              Create new post
+            </Link>
+            <span
+              className="cursor-pointer text-xl font-semibold bg-white border border-black neu-shadow p-2"
+              tabIndex={0}
+              onClick={logout}
+            >
+              Logout
+            </span>
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link
+              to="/login"
+              className="text-xl font-semibold bg-white border border-black neu-shadow p-2"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="text-xl font-semibold bg-white border border-black neu-shadow p-2"
+            >
+              Register
+            </Link>
           </>
         )}
       </nav>

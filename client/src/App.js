@@ -16,21 +16,32 @@ import DeletePost from './Pages/DeletePost';
 function App() {
   return (
     //setting routes for the site
-    <UserContextProvider>
-      <Routes>
-      <Route path='/' element={<Layout/>}>
-        <Route index element= {<IndexPage/>}/>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/register' element={<RegisterPage/>}/>
-        <Route path='/create' element={<CreatePost/>}/>
-        <Route path='/post/:id' element={<PostPage/>}/>
-        <Route path='/edit/:id' element={<EditPost/>}/>
-        <Route path='/delete/:id' element={<DeletePost/>}/>
-      </Route>
-    </Routes>
-   </UserContextProvider>
-    
-    
+    <>
+      <span className="text-gray-600 text-xl fixed bottom-[25px] left-[25px]">
+        With ♥{" "}
+        <a
+          href="https://www.linkedin.com/in/vipinya211/"
+          rel="noreferrer"
+          target="_blank"
+          className="underline"
+        >
+          Vipin
+        </a>{" "}
+      </span>
+      <UserContextProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<IndexPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/create" element={<CreatePost />} />
+            <Route path="/post/:id" element={<PostPage />} />
+            <Route path="/edit/:id" element={<EditPost />} />
+            <Route path="/delete/:id" element={<DeletePost />} />
+          </Route>
+        </Routes>
+      </UserContextProvider>
+    </>
   );
 }
 

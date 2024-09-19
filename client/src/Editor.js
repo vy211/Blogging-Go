@@ -10,13 +10,14 @@ export default function Editor({value,onChange}){
           ['clean']
         ],
       };
-      return(
-        <div className="content">
-            <ReactQuill
-                value={value}
-                theme="snow"
-                onChange={onChange}
-                modules={modules}/>
+      return (
+        <div className="content bg-white rounded-lg">
+          <ReactQuill
+            value={value}
+            theme="snow"
+            onChange={onChange}
+            modules={modules}
+          />
         </div>
       );
 }

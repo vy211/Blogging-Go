@@ -44,26 +44,30 @@ const CreatePost =()=>{
   }
   return (
     <form onSubmit={createNewPost}>
-      <input type="title"
-       placeholder={'Title'} 
-        value={title} 
-      onChange={ev=>setTitle(ev.target.value)} />
+      <input
+        type="title"
+        placeholder={"Title"}
+        value={title}
+        onChange={(ev) => setTitle(ev.target.value)}
+      />
 
-      <input type="summary" 
-        placeholder={'Summary'}
+      <input
+        type="summary"
+        placeholder={"Summary"}
         value={summary}
-        onChange={ev=>setSummary(ev.target.value)}/>
+        onChange={(ev) => setSummary(ev.target.value)}
+      />
 
-      <input type="file"
-        onChange={ev=> setFiles(ev.target.files)}
-      /> 
+      <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
 
       {/* Now instead of normal text area we will be using 
       a module named react-quill it provides text-editor
-      with many functionalities */ }
+      with many functionalities */}
 
-      <Editor value={content} onChange={setContent}/>
-      <button style={{marginTop:'5px'}}>Create post</button>
+      <Editor value={content} onChange={setContent} />
+      <button className="text-xl w-full rounded-lg font-semibold bg-gray-600 border border-white neu-shadow-white p-2 text-white mt-5">
+        Create post
+      </button>
     </form>
   );
 };
