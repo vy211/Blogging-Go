@@ -116,53 +116,64 @@ export default function PostPage() {
   if (!postInfo) return "";
 
     return (
-            <div className="post-page">
-            <h1>{postInfo.title}</h1>
-            <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
-            <div className="author">by {postInfo.author.username}</div>
-            {userInfo.id === postInfo.author._id && (
-                <div className="edit-row">
-                <Link className="edit-btn" to={`/edit/${postInfo._id}`}>
-                    Edit
-                </Link>
-                <Link className="delete-btn" to={`/delete/${postInfo._id}`}>
-                    Delete
-                </Link>
-                </div>
-            )}
-            <div className="image">
-                <img src={`http://localhost:4000/${postInfo.cover}`} alt=''/>
-            </div>
-            
-            <div  className="content" dangerouslySetInnerHTML={{__html:postInfo.content}}/>
+      <div className="post-page">
+        <h1>{postInfo.title}</h1>
+        <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
+        <div className="author">by {postInfo.author.username}</div>
+        {userInfo.id === postInfo.author._id && (
+          <div className="edit-row">
+            <Link className="edit-btn" to={`/edit/${postInfo._id}`}>
+              Edit
+            </Link>
+            <Link className="delete-btn" to={`/delete/${postInfo._id}`}>
+              Delete
+            </Link>
+          </div>
+        )}
+        <div className="image">
+          <img src={`http://localhost:4000/${postInfo.cover}`} alt="" />
+        </div>
 
-            <div className="post-interactions">
-                <button className={`like-btn ${Liked ? 'liked' : ''}`} onClick={handleLike}>
-                    Likes: {likes}
-                </button>
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{ __html: postInfo.content }}
+        />
 
-            <div className="comments">
-                <h3>Comments</h3>
-                    {/* Render the list of comments */}
-                    {comments.map((comment, index) => (
-                    <div key={index} className="comment">
-                        {/* Display comment information */}
-                        <div className="comment-author">{usernames[index]}</div>
-                        <div className="comment-content">{comment}</div>
-                    </div>
-                ))}
+        <div className="post-interactions">
+          <button
+            className={`like-btn ${Liked ? "liked" : ""}`}
+            onClick={handleLike}
+          >
+            Likes: {likes}
+          </button>
 
-                {/* Comment form */}
-                <form onSubmit={handleComment}>
-                <textarea
-                    placeholder="Write a comment..."
-                    value={commentText}
-                    onChange={handleChange}
-                />
-                <button type="submit">Submit</button>
-                </form>
-            </div>
-            </div>
-        </div>      
+          <div className="comments">
+            <h3>Comments</h3>
+            {/* Render the list of comments */}
+            {comments.map((comment, index) => (
+              <div key={index} className="comment">
+                {/* Display comment information */}
+                <div className="comment-author">{usernames[index]}</div>
+                <div className="comment-content">{comment}</div>
+              </div>
+            ))}
+
+            {/* Comment form */}
+            <form onSubmit={handleComment}>
+              <textarea
+                placeholder="Write a comment..."
+                value={commentText}
+                onChange={handleChange}
+              />
+              <button
+                className="text-xl  rounded-lg font-semibold bg-gray-600 border border-white active:bg-gray-800 active:shadow-none neu-shadow-white p-2 text-white mt-5"
+                type="submit"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     );
 };

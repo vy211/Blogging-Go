@@ -52,14 +52,21 @@ export default function Header() {
   return (
     <header>
       <div className="flex items-center gap-2">
-        <img src="/bglogo.png" alt="BG Logo" className="w-[50px] rounded-lg" />
-        <Link to="/" className="text-4xl logo-font">
+        <Link to="/" className="flex text-4xl logo-font">
+          <img
+            src="/bglogo.png"
+            alt="BG Logo"
+            className="w-[50px] rounded-lg mr-2"
+          />
           Bloging Go
         </Link>
       </div>
       <nav>
         {username ? (
           <>
+            <p className="text-xl font-semibold p-2">
+              Hi, {username.charAt(0).toUpperCase() + username.slice(1)}
+            </p>
             <Link
               to="/create"
               className="text-xl font-semibold bg-white border border-black neu-shadow p-2"
