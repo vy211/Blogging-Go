@@ -26,17 +26,17 @@ router.post('/login',async (req, res) => {
     
     //If password macthes then we are good to go
     if(password===userDoc.password){
-      
-      const payload={username,id:userDoc._id};
-
-      jwt.sign(payload,process.env.JWT_SECRET,{},(err,token)=>{
-        if(err){
+      console.log("password match");
+      const payload = { username, id: userDoc._id };
+      console.log(payload);
+      jwt.sign(payload, process.env.JWT_SECRET, {}, (err, token) => {
+        if (err) {
+          console.log("error of verification");
           throw err;
-        }
-        else{
-            console.log('token generated ',userDoc._id);
-            res.cookie('token',token).json({
-            id:userDoc._id,
+        } else {
+          console.log("token generated ", userDoc._id);
+          res.cookie("token", token).json({
+            id: userDoc._id,
             username,
           });
         }
@@ -46,7 +46,8 @@ router.post('/login',async (req, res) => {
       //if password was not matched
       res.status(400).json('wrong credentials');
     }
-  }catch (error) {
+  } catch (error) {
+    console.log(error)
     res.json({"msg":error});
   }
 });
