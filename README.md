@@ -28,7 +28,8 @@ A full-stack blogging application built with React for the frontend, Node.js for
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB, Mongoose
 - **Authentication:** JWT (JSON Web Tokens)
-- **Styling:** CSS, Bootstrap
+- **Styling:** CSS, Tailwind
+-  **Deployment:** on Render
 
 ## Installation
 
@@ -65,11 +66,11 @@ A full-stack blogging application built with React for the frontend, Node.js for
 
     ```bash
     # Run backend server
-    cd backend
+    cd api
     npm start
 
     # Run frontend server
-    cd ../frontend
+    cd ../client
     npm start
     ```
 
