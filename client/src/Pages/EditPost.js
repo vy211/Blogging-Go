@@ -3,6 +3,7 @@ import 'react-quill/dist/quill.snow.css';
 import {useParams, Navigate } from "react-router-dom";
 import Editor from "../Editor";
 import Swal from "sweetalert2";
+import { hostLink } from "../host";
 
 function EditPost() {
   const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ function EditPost() {
   let response;
   useEffect(() => {
     async function fetchData() {
-      response = await fetch(`http://localhost:4000/post/${id}`);
+      response = await fetch(`${hostLink}post/${id}`);
       if (response.ok) {
         const postDoc = await response.json();
         setTitle(postDoc.title);
@@ -40,7 +41,7 @@ function EditPost() {
     //let's see what are we sending
     console.log([...data]); // Log the form data to the console
 
-    const response = await fetch(`http://localhost:4000/post/${id}`, {
+    const response = await fetch(`${hostLink}post/${id}`, {
       method: "PUT",
       body: data,
       credentials: "include",

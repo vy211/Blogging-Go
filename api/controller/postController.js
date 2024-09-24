@@ -1,6 +1,7 @@
 const multer = require("multer");
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 const { PostModel, CommentModel } = require("../Models/Post.js");
 
 const uploadMiddleware = multer({ dest: "./uploads/" });
@@ -62,9 +63,33 @@ const getPostById = async (req, res) => {
 // Delete a post by ID
 const deletePostById = async (req, res) => {
   const { id } = req.params;
+  console.log(req.params);
+  const possibleExtensions = ["png", "jpg", "jpeg", "gif"];
   try {
     await PostModel.findOneAndDelete({ _id: id });
-    res.json({ Message: "Post deleted" });
+
+    let imageDeleted = false;
+
+    // Check for each possible extension
+    for (const ext of possibleExtensions) {
+      const filePath = path.join(
+        __dirname,
+        "..",
+        "uploads",
+        `acbf5eff113e4f77e4635579a23ded3f.jpg`
+      );
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+        imageDeleted = true;
+        break;
+      }
+    }
+    //66ed20cee5fd4c678188598b
+    if (imageDeleted) {
+      console.log({ message: "Post and image deleted" });
+    } else {
+      console.log({ message: "Post deleted, but image not found" });
+    }
   } catch (err) {
     res.json({ message: err });
   }
@@ -108,6 +133,7 @@ const updatePostById = [
 ];
 
 // Handle likes
+
 const handleLike = async (req, res) => {
   try {
     const postId = req.params.id;

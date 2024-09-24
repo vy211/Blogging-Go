@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { hostLink } from "../host";
 
 export default function RegisterPage() {
   const [username, setUsername] = useState("");
@@ -9,7 +10,7 @@ export default function RegisterPage() {
 
   async function register(event) {
     event.preventDefault();
-    const response = await fetch("http://localhost:4000/auth/register", {
+    const response = await fetch(`${hostLink}auth/register`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },

@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { hostLink } from "../host";
 const DeletePost = () => {
   const [redirect, setRedirect] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     const deletePost = async () => {
       console.log("Going to delete the post!! with id ", id);
-      const response = await fetch(`http://localhost:4000/post/${id}`, {
+      const response = await fetch(`${hostLink}post/${id}`, {
         method: "DELETE",
         credentials: "include",
       });

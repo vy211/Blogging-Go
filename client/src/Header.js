@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
-
+import { hostLink } from "./host";
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +9,7 @@ export default function Header() {
   useEffect(() => {
     async function fetchProfile() {
       try {
-        const response = await fetch("http://localhost:4000/profile", {
+        const response = await fetch(`${hostLink}profile`, {
           credentials: "include",
         });
 
@@ -30,7 +30,7 @@ export default function Header() {
 
   async function logout() {
     try {
-      await fetch("http://localhost:4000/auth/logout", {
+      await fetch(`${hostLink}auth/logout`, {
         credentials: "include",
         method: "POST",
       });
@@ -69,12 +69,12 @@ export default function Header() {
             </p>
             <Link
               to="/create"
-              className="text-xl font-semibold bg-white border border-black neu-shadow p-2"
+              className="text-xl active:bg-red-400 active:shadow-none font-semibold bg-white border border-black neu-shadow p-2"
             >
               Create new post
             </Link>
             <span
-              className="cursor-pointer text-xl font-semibold bg-white border border-black neu-shadow p-2"
+              className="cursor-pointer text-xl  active:bg-red-400 active:shadow-none font-semibold bg-white border border-black neu-shadow p-2"
               tabIndex={0}
               onClick={logout}
             >
@@ -85,13 +85,13 @@ export default function Header() {
           <>
             <Link
               to="/login"
-              className="text-xl font-semibold bg-white border border-black neu-shadow p-2"
+              className="text-xl font-semibold active:bg-red-400 active:shadow-none bg-white border border-black neu-shadow p-2"
             >
               Login
             </Link>
             <Link
               to="/register"
-              className="text-xl font-semibold bg-white border border-black neu-shadow p-2"
+              className="text-xl font-semibold active:bg-red-400 active:shadow-none bg-white border border-black neu-shadow p-2"
             >
               Register
             </Link>

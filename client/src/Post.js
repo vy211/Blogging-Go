@@ -1,7 +1,7 @@
 //using this to match our date format with that of in Database
 import { format } from 'date-fns';
 import {Link} from 'react-router-dom';
-
+import { hostLink } from "./host";
 
 //Passed props to post
 export default function Post({
@@ -20,7 +20,7 @@ export default function Post({
     <div className="post bg-white p-4 border border-black rounded neu-shadow">
       <div className="image">
         <Link to={`/post/${_id}`}>
-          <img src={"http://localhost:4000/" + cover} alt="" />
+          <img src={`${hostLink}` + cover} alt="" />
         </Link>
       </div>
       <div className="texts">

@@ -1,19 +1,19 @@
 import { useState,useEffect } from "react";
 import Post from "../Post";
+import { hostLink } from "../host";
 
-export default function IndexPage(){
-  const [posts,setPosts]=useState([]);
+export default function IndexPage() {
+  const [posts, setPosts] = useState([]);
   //study about useEffect
-  useEffect(()=>{
-
+  useEffect(() => {
     //fetching posts from database
-    fetch('http://localhost:4000/post').then((response)=>{
-      response.json().then(posts=>{
+    fetch(`${hostLink}post`).then((response) => {
+      response.json().then((posts) => {
         setPosts(posts);
-        console.log(posts.length)
+        console.log(posts.length);
       });
     });
-  },[]);
+  }, []);
 
   return (
     <div>

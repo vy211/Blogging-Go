@@ -2,7 +2,7 @@ import { useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { Navigate } from "react-router-dom";
 import Editor from "../Editor";
-
+import { hostLink } from "../host";
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -19,7 +19,7 @@ const CreatePost = () => {
     ev.preventDefault();
     console.log(files);
 
-    const response = await fetch("http://localhost:4000/post", {
+    const response = await fetch(`${hostLink}post`, {
       method: "POST",
       body: data,
       //sending credentials back to server

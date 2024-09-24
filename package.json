@@ -1,0 +1,10 @@
+{
+  "name": "bloging-go",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node api/index.js",
+    "client": "npm start --prefix client",
+    "client:build": "npm run build --prefix client",
+    "install": "npm install --prefix api && npm install --prefix client"
+  }
+}
