@@ -40,6 +40,6 @@ app.use("/uploads", express.static(__dirname + "/uploads"));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client", "build", "index.html"));
 });
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 4000, () => {
   console.log(`server is listening at port ${process.env.PORT}...`);
 });
