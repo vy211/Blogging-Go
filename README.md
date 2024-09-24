@@ -1,4 +1,16 @@
 # Blogging Go
+<div style="display: flex; align-items: center;">
+  <a href="https://blogging-go.onrender.com/" target="Bloging-Go" rel="noopener noreferrer">
+    <img 
+      src="https://github.com/user-attachments/assets/1a69a393-82fb-4c65-9318-d330726565ce" 
+      alt="Blogging Go Logo" 
+      style="width: 50px; height: 50px; border-radius: 5px;" 
+    />
+    <p>click here!</p>
+  </a>
+</div>
+
+
 
 A full-stack blogging application built with React for the frontend, Node.js for the backend, and MongoDB for the database.
 
