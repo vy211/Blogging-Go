@@ -12,7 +12,19 @@ require("dotenv").config();
 const bodyParser = require("body-parser");
 app.use(express.json()); //For parsing the payloads
 //when passing credentials we need set up additional properties
-app.use(cors({ credentials: true, origin: "http://localhost:4000" }));
+//app.use(cors({ credentials: true, origin: "" }));
+const allowedOrigins = ["https://blogging-go.onrender.com", "http://localhost:4000"];
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 app.use(cookieParser());
 const jwt = require("jsonwebtoken");
 app.use(bodyParser.urlencoded({ extended: true }));
