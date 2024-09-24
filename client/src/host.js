@@ -1,1 +1,1 @@
-export const hostLink = "http://localhost:4000/";
+export const hostLink = "https://blogging-go.onrender.com/";

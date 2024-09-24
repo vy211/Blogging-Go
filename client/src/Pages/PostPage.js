@@ -17,7 +17,7 @@ export default function PostPage() {
   const { id } = useParams();
 
   const handleLike = async () => {
-    const response = await fetch(`http://localhost:4000/post/like/${id}`, {
+    const response = await fetch(`${hostLink}post/like/${id}`, {
       method: "POST",
       credentials: "include",
       headers: {
